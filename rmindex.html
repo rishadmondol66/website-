@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeNest</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            height: 70px;
+            background: #080d18;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 60px;
+
+            position: relative;
+            z-index: 10;
+
+            border-bottom: 1px solid rgba(0, 188, 212, 0.12);
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+
+
+        /* LOGIN BUTTON */
+
+        .login-btn {
+            margin-left: 30px;
+
+            padding: 9px 18px;
+
+            border: 1px solid #00e5ff;
+            border-radius: 8px;
+
+            background: rgba(0, 229, 255, 0.05);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        .login-btn i {
+            margin-right: 7px;
+        }
+
+        .login-btn:hover {
+            background: #00e5ff;
+            color: #061018;
+
+            box-shadow:
+                0 0 15px rgba(0, 229, 255, 0.5),
+                0 0 35px rgba(0, 229, 255, 0.2);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            height: calc(100vh - 70px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-content {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            color: white;
+
+            z-index: 2;
+
+            width: 90%;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 25px;
+
+            background: #00bcd4;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0097a7;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            position: relative;
+
+            min-height: 450px;
+
+            padding: 110px 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: "";
+
+            position: absolute;
+
+            top: -30px;
+            left: -30px;
+
+            width: calc(100% + 60px);
+            height: calc(100% + 60px);
+
+            background-image: url("images.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            filter: blur(10px);
+
+            transform: scale(1.05);
+
+            z-index: 0;
+        }
+
+        .about::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            z-index: 1;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 800px;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+
+            margin-bottom: 20px;
+
+            color: #00e5ff;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            padding: 90px 60px;
+
+            background: #f5f5f5;
+
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .services-description {
+            margin-bottom: 45px;
+            color: #555;
+            font-size: 17px;
+        }
+
+        .service-box {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+
+            padding: 35px 25px;
+
+            width: 280px;
+            min-height: 250px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card i {
+            font-size: 40px;
+
+            color: #00bcd4;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 23px;
+
+            margin-bottom: 15px;
+
+            color: #111827;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            padding: 90px 60px;
+
+            text-align: center;
+
+            background: white;
+        }
+
+        .contact h2 {
+            font-size: 40px;
+
+            margin-bottom: 20px;
+
+            color: #111827;
+        }
+
+        .contact p {
+            font-size: 18px;
+
+            color: #555;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #080d18;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        .social-icons {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #111827;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #00e5ff;
+
+            color: #061018;
+
+            transform: translateY(-5px);
+        }
+
+
+        /* ==================================================
+           LOGIN OVERLAY
+        ================================================== */
+
+        .login-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.62);
+
+            backdrop-filter: blur(7px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.35s ease;
+
+            z-index: 998;
+        }
+
+        .login-overlay.active {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        /* ==================================================
+           LOGIN PANEL
+        ================================================== */
+
+        .login-panel {
+            position: fixed;
+
+            top: 0;
+            right: 0;
+
+            width: 400px;
+            max-width: 92%;
+
+            height: 100vh;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #101827,
+                    #070b13
+                );
+
+            border-left: 1px solid rgba(0, 229, 255, 0.25);
+
+            box-shadow:
+                -15px 0 50px rgba(0, 0, 0, 0.5),
+                -5px 0 30px rgba(0, 229, 255, 0.08);
+
+            z-index: 999;
+
+            padding: 35px;
+
+            transform: translateX(105%);
+
+            transition:
+                transform 0.5s
+                cubic-bezier(.77, 0, .18, 1);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .login-panel.active {
+            transform: translateX(0);
+        }
+
+
+        /* =========================
+           GLOWING BACKGROUND
+        ========================= */
+
+        .login-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background: #00e5ff;
+
+            border-radius: 50%;
+
+            top: -100px;
+            right: -90px;
+
+            filter: blur(80px);
+
+            opacity: 0.18;
+        }
+
+        .login-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: #0066ff;
+
+            border-radius: 50%;
+
+            bottom: -80px;
+            left: -80px;
+
+            filter: blur(80px);
+
+            opacity: 0.15;
+        }
+
+
+        /* =========================
+           CLOSE
+        ========================= */
+
+        .close-login {
+            position: absolute;
+
+            top: 20px;
+            right: 22px;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            background: rgba(255,255,255,0.05);
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            z-index: 5;
+
+            transition: 0.3s;
+        }
+
+        .close-login:hover {
+            background: #00e5ff;
+
+            color: #061018;
+
+            transform: rotate(90deg);
+
+            box-shadow:
+                0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+
+        /* =========================
+           LOGIN CONTENT
+        ========================= */
+
+        .login-content {
+            width: 100%;
+
+            max-width: 315px;
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+
+        /* ICON */
+
+        .login-icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0, 229, 255, 0.08);
+
+            border: 1px solid
+                rgba(0, 229, 255, 0.35);
+
+            color: #00e5ff;
+
+            font-size: 27px;
+
+            box-shadow:
+                0 0 25px
+                rgba(0, 229, 255, 0.12);
+        }
+
+
+        /* TITLE */
+
+        .login-content h2 {
+            text-align: center;
+
+            color: white;
+
+            font-size: 29px;
+
+            margin-bottom: 8px;
+        }
+
+        .login-content h2 span {
+            color: #00e5ff;
+        }
+
+        .login-subtitle {
+            text-align: center;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* INPUT */
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box > i {
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+
+            transition: 0.3s;
+        }
+
+        .input-box input {
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 44px;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            border: 1px solid
+                rgba(255,255,255,0.1);
+
+            background:
+                rgba(255,255,255,0.045);
+
+            color: white;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .input-box input::placeholder {
+            color: #64748b;
+        }
+
+        .input-box input:focus {
+            border-color: #00e5ff;
+
+            background:
+                rgba(0, 229, 255, 0.05);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(0, 229, 255, 0.08);
+        }
+
+        .input-box input:focus + .password-toggle {
+            color: #00e5ff;
+        }
+
+
+        /* PASSWORD TOGGLE */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: #00e5ff;
+        }
+
+
+        /* OPTIONS */
+
+        .login-options {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin: 5px 0 22px;
+
+            font-size: 12px;
+        }
+
+        .remember {
+            color: #94a3b8;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            cursor: pointer;
+        }
+
+        .remember input {
+            accent-color: #00e5ff;
+        }
+
+        .forgot-password {
+            color: #00e5ff;
+
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+
+        /* LOGIN BUTTON */
+
+        .submit-login {
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00a8c6
+                );
+
+            color: #041016;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 229, 255, 0.18);
+        }
+
+        .submit-login:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 229, 255, 0.3);
+        }
+
+        .submit-login i {
+            margin-right: 7px;
+        }
+
+
+        /* DIVIDER */
+
+        .login-divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 24px 0;
+
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background:
+                rgba(255,255,255,0.08);
+        }
+
+
+        /* SOCIAL */
+
+        .social-login {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .social-login button {
+            flex: 1;
+
+            height: 42px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #cbd5e1;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .social-login button:hover {
+            border-color: #00e5ff;
+
+            color: #00e5ff;
+
+            background:
+                rgba(0,229,255,0.05);
+        }
+
+
+        /* SIGNUP */
+
+        .signup-text {
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-top: 23px;
+        }
+
+        .signup-text a {
+            color: #00e5ff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .login-btn {
+                margin-left: 10px;
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .hero-content p {
+                font-size: 17px;
+            }
+
+            .about {
+                padding: 80px 25px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .services {
+                padding: 70px 20px;
+            }
+
+            .contact {
+                padding: 70px 20px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            header {
+                height: auto;
+
+                min-height: 70px;
+
+                padding: 14px;
+
+                flex-wrap: wrap;
+
+                gap: 10px;
+            }
+
+            nav {
+                width: 100%;
+
+                justify-content: center;
+
+                padding-bottom: 5px;
+            }
+
+            nav a {
+                margin: 0 6px;
+
+                font-size: 11px;
+            }
+
+            .login-btn {
+                margin-left: 4px;
+            }
+
+            .hero {
+                height: calc(100vh - 115px);
+            }
+
+            .login-panel {
+                width: 100%;
+
+                max-width: 100%;
+
+                padding: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            <span>Code</span>Nest
+        </div>
+
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#about">About</a>
+
+            <a href="#services">Services</a>
+
+            <a href="#contact">Contact</a>
+
+            <button class="login-btn" id="openLogin">
+                <i class="fa-solid fa-user"></i>
+                Login
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <img src="images.jpg" alt="CodeNest Background">
+
+        <div class="hero-content">
+
+            <h1>Welcome to CodeNest</h1>
+
+            <p>
+                I am learning Web Development
+            </p>
+
+            <a href="#about" class="btn">
+                Explore More
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-content">
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello! My name is Rishad.
+                I am learning HTML, CSS and Web Development.
+                I enjoy creating websites and learning new
+                technologies. CodeNest is my personal website
+                where I can showcase my skills and projects.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
+    <section class="services" id="services">
+
+        <h2>My Services</h2>
+
+        <p class="services-description">
+            Here are some of the skills and services I am learning.
+        </p>
+
+        <div class="service-box">
+
+            <div class="card">
+
+                <i class="fa-solid fa-palette"></i>
+
+                <h3>Web Design</h3>
+
+                <p>
+                    I create clean, modern and attractive
+                    website designs using HTML and CSS.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-brands fa-html5"></i>
+
+                <h3>HTML & CSS</h3>
+
+                <p>
+                    I create structured web pages and style
+                    them with CSS to make them responsive
+                    and user-friendly.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <i class="fa-solid fa-code"></i>
+
+                <h3>Development</h3>
+
+                <p>
+                    I am learning modern web development
+                    and building websites with clean and
+                    organized code.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>Contact Me</h2>
+
+        <p>
+            Email: rishadmondol66@gmail.com
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="social-icons">
+
+            <a href="https://www.facebook.com/RishadMondol66"
+                target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/8801820039698"
+                target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.instagram.com/rishadmondol66/"
+                target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+        </div>
+
+        <p>
+            © 2026 CodeNest. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ==================================================
+         LOGIN OVERLAY
+    ================================================== -->
+
+    <div class="login-overlay" id="loginOverlay"></div>
+
+
+    <!-- ==================================================
+         LOGIN PANEL
+    ================================================== -->
+
+    <div class="login-panel" id="loginPanel">
+
+        <button class="close-login" id="closeLogin">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <div class="login-content">
+
+            <div class="login-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+
+            <h2>Welcome to <span>CodeNest</span></h2>
+
+            <p class="login-subtitle">
+                Sign in to continue your journey
+            </p>
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label>Email Address</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+
+                    <span
+                        class="password-toggle"
+                        id="togglePassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div class="login-options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#" class="forgot-password">
+                    Forgot password?
+                </a>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <button class="submit-login" id="submitLogin">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Sign In
+
+            </button>
+
+
+            <!-- DIVIDER -->
+
+            <div class="login-divider">
+                OR CONTINUE WITH
+            </div>
+
+
+            <!-- SOCIAL -->
+
+            <div class="social-login">
+
+                <button>
+                    <i class="fa-brands fa-google"></i>
+                    Google
+                </button>
+
+                <button>
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </button>
+
+            </div>
+
+
+            <!-- SIGN UP -->
+
+            <p class="signup-text">
+
+                Don't have an account?
+
+                <a href="#">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        const openLogin =
+            document.getElementById("openLogin");
+
+        const closeLogin =
+            document.getElementById("closeLogin");
+
+        const loginPanel =
+            document.getElementById("loginPanel");
+
+        const loginOverlay =
+            document.getElementById("loginOverlay");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const password =
+            document.getElementById("password");
+
+
+        /* OPEN LOGIN */
+
+        function openLoginPanel() {
+
+            loginPanel.classList.add("active");
+
+            loginOverlay.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        /* CLOSE LOGIN */
+
+        function closeLoginPanel() {
+
+            loginPanel.classList.remove("active");
+
+            loginOverlay.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+
+        openLogin.addEventListener(
+            "click",
+            openLoginPanel
+        );
+
+
+        closeLogin.addEventListener(
+            "click",
+            closeLoginPanel
+        );
+
+
+        loginOverlay.addEventListener(
+            "click",
+            closeLoginPanel
+        );
+
+
+        /* ESC KEY */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    closeLoginPanel();
+
+                }
+
+            }
+        );
+
+
+        /* SHOW / HIDE PASSWORD */
+
+        togglePassword.addEventListener(
+            "click",
+            function () {
+
+                if (password.type === "password") {
+
+                    password.type = "text";
+
+                    togglePassword.innerHTML =
+                        '<i class="fa-solid fa-eye-slash"></i>';
+
+                } else {
+
+                    password.type = "password";
+
+                    togglePassword.innerHTML =
+                        '<i class="fa-solid fa-eye"></i>';
+
+                }
+
+            }
+        );
+
+
+        /* LOGIN DEMO */
+
+        document.getElementById("submitLogin")
+            .addEventListener(
+                "click",
+                function () {
+
+                    const email =
+                        document.getElementById("email").value.trim();
+
+                    const pass =
+                        document.getElementById("password").value.trim();
+
+
+                    if (email === "" || pass === "") {
+
+                        alert(
+                            "Please enter your email and password."
+                        );
+
+                        return;
+                    }
+
+
+                    alert(
+                        "Login button clicked successfully!"
+                    );
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
+```
